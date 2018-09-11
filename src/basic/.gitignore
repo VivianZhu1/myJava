@@ -7,3 +7,8 @@
 /ReflectionTest.class
 /Stack.class
 /StringTest.class
+/ConcurrentHashMapTest$1.class
+/ConcurrentHashMapTest$2.class
+/ConcurrentHashMapTest$3.class
+/ConcurrentHashMapTest.class
+/FinallyTest.class
