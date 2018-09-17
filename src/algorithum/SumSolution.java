@@ -1,5 +1,6 @@
 package algorithum;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -11,10 +12,9 @@ public class SumSolution {
 		int target = 10;
 		
 		int[] rs = SumSolution.twoSum(ary, target);
+		System.out.println(Arrays.toString(rs));
 		
-		for (int i : rs) {
-			System.out.println(i);
-		}
+		
 	}
 
 	/**
