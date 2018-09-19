@@ -2,18 +2,10 @@ package algorithum;
 
 import java.util.ArrayDeque;
 
-public class BinaryTreeTranverse {
-    static class TreeNode{
-        int value;
-        TreeNode left;
-        TreeNode right;
+import util.TreeNode;
 
-        public TreeNode(int value){
-            this.value=value;
-            
-            System.out.println("dafdsf");
-        }
-    }
+public class BinaryTreeTranverse {
+ 
 
     TreeNode root;
 

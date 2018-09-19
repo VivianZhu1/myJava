@@ -1,5 +1,7 @@
 package sort;
 
+import util.ArrayUtils;
+
 /**
  * 
  * 
@@ -11,25 +13,115 @@ public class SortUtil {
 	public static void main(String[] args) {
 		
 		int[] array= new int[]{11,10,33,42,12,34,5,23,6};
-		System.out.println("Before sortation:" );
-		for (int i : array) {
-			System.out.print(i +",");
-		}
-		System.out.println("");
+		ArrayUtils.printArray(array,"Before sortation:");
+	
 
 		SortUtil SortUtil = new SortUtil();
 		
-//		SortUtil.bubbleSort(array);
-//		SortUtil.insertSort(array);
-//		SortUtil.selectSort(array);
-		SortUtil.quickSort(array);
+		SortUtil.bubbleSort(array);
+		ArrayUtils.printArray(array,"Bubble Sort:");
 		
-		System.out.println("After sortation:" );
-		for (int i : array) {
-			System.out.print(i +",");
-		}
+		array= new int[]{11,10,33,42,12,34,5,23,6};
+		SortUtil.insertSort(array);
+		ArrayUtils.printArray(array,"Insert Sort:");
+		
+		array= new int[]{11,10,33,42,12,34,5,23,6};
+		SortUtil.selectSort(array);
+		ArrayUtils.printArray(array, "Select Sort:");
+		
+		array= new int[]{11,10,33,42,12,34,5,23,6};
+		SortUtil.quickSort(array);
+		ArrayUtils.printArray(array, "Quick Sort:");
+		
+		array= new int[]{11,10,33,42,12,34,5,23,6};
+		SortUtil.mergeSort(array);
+		ArrayUtils.printArray(array, "Merge Sort:");
+		
+
 	}
 	
+	private void mergeSort(int[] array) {
+		sortArray(array, 0, array.length-1);
+		
+	}
+
+	private void sortArray(int[] array, int start, int end) {
+		if(start == end)
+			return;
+		
+		int size = end - start + 1;
+		int separator = 0;
+		if(size % 2 == 0) {
+			separator = start + size / 2 - 1;
+		}else{
+			separator = start + size / 2;
+		}
+		sortArray(array, start, separator);
+		sortArray(array, separator+1, end);
+		
+		mergeArray(array, start, separator, end);
+	}
+
+	private void mergeArray(int[] array, int start, int separator, int end) {
+		int totalSize = end - start + 1;
+		int size1 = separator - start +1;
+		int size2 = end - separator ;
+		
+		int[] ary1 = new int[size1];
+		int[] ary2 = new int[size2];
+		
+		for(int i = 0; i< size1; i++) {
+			ary1[i] =  array[start+i];
+		}
+		
+		for(int i = 0; i< size2; i++){
+			ary2[i] = array[separator+1 +i];
+		}
+		
+		int mergeCount = 0;
+		int index1 = 0;
+		int index2 = 0;
+		
+		while(mergeCount < totalSize) {
+			if(index1 == size1) {
+				for(int j = index2; j<size2 ;j++) {
+					array[start + mergeCount] = ary2[j];
+					index2++;
+					mergeCount++;
+				}
+			}else if(index2 == size2) {
+				for(int k = index1; k<size1; k++) {
+					array[start + mergeCount] = ary1[k];
+					index1++;
+					mergeCount++;
+				}
+			}else {
+				int value1 = ary1[index1];
+				int value2 = ary2[index2];
+				
+				if(value1 == value2) {
+					array[start+mergeCount] = value1;
+					array[start+ mergeCount +1] = value1;
+					mergeCount++;
+					index1++;
+					index2++;
+				}else if(value1 < value2) {
+					array[start + mergeCount] = value1;
+					mergeCount++;
+					index1++;
+					
+				}else if(value1 > value2){
+					array[start + mergeCount] = value2;
+					mergeCount++;
+					index2++;
+				}
+				
+			}
+		}
+		
+		
+	}
+
 	/**
 	 * 交换排序
 	 * bubble sort, 
@@ -95,8 +187,8 @@ public class SortUtil {
 	public void selectSort(int[] a) {
 		for (int i = 0; i < a.length-1; i++) {
 			int pivotkey = a[i];
-			int index = i+1;
-			int min = a[index];
+			int index = i;
+			int min = a[i];
 			for(int j = i+1; j < a.length-1; j++) {
 				if(a[j+1] < min) {
 					min = a[j+1];
