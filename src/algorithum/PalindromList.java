@@ -2,6 +2,9 @@ package algorithum;
 
 import java.util.LinkedList;
 
+import util.ArrayUtils;
+import util.ListNode;
+
 public class PalindromList {
 	
 	public static void main(String[] args) {
@@ -32,14 +35,12 @@ public class PalindromList {
 			linkedList.get(j-1).next = linkedList.get(j);
 		}
 		
-		StringBuffer sb = new StringBuffer();
-		for (ListNode node : linkedList) {
-			sb.append(node.val+"(nextVal:"+(node.next != null? node.next.val : "none")+")  ->  ");
-		}
-		System.out.println(sb.substring(0, sb.toString().length()-4));
+		ArrayUtils.printOutLinkedList(linkedList);
 		
 		return linkedList;
 	}
+
+
 
 	private boolean isPalindrome(ListNode head) {
 		boolean isPalindrome = true;
@@ -92,22 +93,9 @@ public class PalindromList {
 			linkedList.get(j-1).next = linkedList.get(j);
 		}
 		
-		StringBuffer sb = new StringBuffer();
-		for (ListNode node : linkedList) {
-			sb.append(node.val+"(nextVal:"+(node.next != null? node.next.val : "none")+")  ->  ");
-		}
-		System.out.println(sb.substring(0, sb.toString().length()-4));
+		ArrayUtils.printOutLinkedList(linkedList);
 		
 		return linkedList;
 	}
 
 }
-
-
-//  Definition for singly-linked list.
- class ListNode {
-    int val;
-    ListNode next;
-    ListNode(int x) { val = x; }
- }
- 

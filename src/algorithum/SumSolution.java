@@ -8,7 +8,8 @@ public class SumSolution {
 	
 	public static void main(String[] args) {
 		
-		int[] ary = {2,5,5,11};
+//		int[] ary = {2,5,5,11};
+		int[] ary = {2,2,5,8};
 		int target = 10;
 		
 		int[] rs = SumSolution.twoSum(ary, target);
@@ -29,19 +30,24 @@ public class SumSolution {
 	 */
 	public static int[] twoSum(int[] ary, int target) {
 		int[] rs = new int[2];
-		Map<Integer, Integer> numMap = new HashMap<Integer, Integer>();
 		
-		for (int i = 0; i < ary.length; i++) {
-			numMap.put(ary[i], i);
+		Map<Integer, Integer> map = new HashMap<Integer, Integer>();
+		
+		for(int i = 0; i< ary.length; i++) {
+			map.put(ary[i], i);
 		}
 		
-		for(int j = 0; j<ary.length; j++) {
-			 int complement = target - ary[j];
-		        if (numMap.containsKey(complement) && numMap.get(complement) != j) {
-		            return new int[] { j, numMap.get(complement) };
-		        }
+		for (int i = 0; i < ary.length; i++) {
+			int val = target - ary[i];
+			if(map.containsKey(val) && map.get(val) != i) {
+				rs[1] = i;
+				rs[0] = map.get(val);
+			}
+			
 		}
 		
 		return rs;
 	}
+	
+	
 }
