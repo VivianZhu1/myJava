@@ -20,7 +20,6 @@ public class DictionaryTest {
 	}
 
 	private boolean wordBreak(String str, List<String> strList) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 	

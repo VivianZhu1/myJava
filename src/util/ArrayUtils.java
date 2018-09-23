@@ -49,6 +49,34 @@ public class ArrayUtils {
 
 		return linkedList;
 	}
+	
+	public static LinkedList<RandomListNode> generateRandomListByArray(int[] array) {
+
+		LinkedList<RandomListNode> linkedList = new LinkedList<RandomListNode>();
+		// create list;
+		for (int intVal : array) {
+			RandomListNode node = new RandomListNode(intVal);
+			linkedList.offer(node);
+		}
+		// create next reference
+		for (int j = 1; j < linkedList.size(); j++) {
+			linkedList.get(j - 1).next = linkedList.get(j);
+		}
+		//create random domain
+		for (int j = 1; j < linkedList.size(); j++) {
+			linkedList.get(j - 1).random = linkedList.get(j);
+		}
+		
+		
+		StringBuffer sb = new StringBuffer();
+		for (RandomListNode node : linkedList) {
+			sb.append(node.label + "(random:" + (node.random != null ? node.next.label : "none") + ")  ->  ");
+		}
+		System.out.println(sb.substring(0, sb.toString().length() - 4));
+
+		return linkedList;
+	}
+
 
 	
 	/**
@@ -110,5 +138,15 @@ public class ArrayUtils {
 		int[] arr = { 0, 13, 65, 5, 97, 25, 0, 37, 22, 0, 4, 28, 0, 0, 32, 0 };
 		TreeNode root = makeBinaryTreeByArray(arr, 1);
 		System.out.println(root.value);
+	}
+
+	public static void printOutList(Node node) {
+		StringBuffer sb = new StringBuffer();
+		while(node.getNext() != null) {
+			sb.append(node.getValue()+"(Random val:"+(node.getRandom() != null? node.getRandom().getValue() : "none")+")  ->  ");
+			node = node.getNext();
+		}
+		System.out.println(sb.substring(0, sb.toString().length()-4));
+		
 	}
 }

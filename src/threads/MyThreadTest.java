@@ -9,20 +9,21 @@ import java.util.concurrent.Future;
 
 public class MyThreadTest {
 	
+	@SuppressWarnings("unchecked")
 	public static void main(String[] args) throws InterruptedException {
 		
 		
-		Callable c1 = new Task();
-		Callable c2 = new Task();
-		Callable c3 = new Task();
-		Callable c4 = new Task();
+		Callable<String> c1 = new Task();
+		Callable<String> c2 = new Task();
+		Callable<String> c3 = new Task();
+		Callable<String> c4 = new Task();
 		
 		
 		ExecutorService pool = Executors.newFixedThreadPool(3);
-		Future f1 = pool.submit(c1);
-		Future f2 = pool.submit(c2);
-		Future f3 = pool.submit(c3);
-		Future f4 = pool.submit(c4);
+		Future<String> f1 = pool.submit(c1);
+		Future<String> f2 = pool.submit(c2);
+		Future<String>  f3 = pool.submit(c3);
+		Future<String>  f4 = pool.submit(c4);
 		
 		Thread.sleep(5000);
 		
@@ -32,7 +33,6 @@ public class MyThreadTest {
 			System.out.println(f3.get().toString());
 			System.out.println(f4.get().toString());
 		} catch (ExecutionException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -42,6 +42,7 @@ public class MyThreadTest {
 }
 
 
+@SuppressWarnings("rawtypes")
 class Task implements Callable{
 
 

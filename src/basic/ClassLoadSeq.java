@@ -19,8 +19,6 @@ public class ClassLoadSeq {
 class Ancesstor{
 	static String name = "A";
 	
-	private String job="job ";
-	
 	static {
 		int age = 31;
 		System.out.println(age);
@@ -36,7 +34,6 @@ class Ancesstor{
 class Child extends Ancesstor{
 	static String name = "C";
 	
-	private String work="work";
 	
 	static {
 		int age = 3;

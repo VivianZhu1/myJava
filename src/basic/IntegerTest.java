@@ -2,6 +2,7 @@ package basic;
 
 public class IntegerTest {
 	
+	@SuppressWarnings("deprecation")
 	public static void main(String[] args) {
 		
 		Integer a=new Integer(100);

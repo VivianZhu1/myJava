@@ -4,6 +4,7 @@ import java.util.Map.Entry;
 
 public class MapTest {
 	
+	@SuppressWarnings("rawtypes")
 	public static void main(String[] args) {
 		
 		Entry[] table = new Entry[10];

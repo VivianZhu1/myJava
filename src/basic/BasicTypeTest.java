@@ -8,6 +8,7 @@ public class BasicTypeTest {
 //	定义数组时，如果是基本数据类型int、byte、boolean、long、float、double
 //	其每个元素的默认值是0,char数据类型的默认值时空格，而如果是对象数据类型那么默认值是null
 	
+	@SuppressWarnings("unused")
 	public static void main(String[] args) {
 		
     	//a数组中的默认值是100个0，因为byte是基本数据类型 (8 个字符， 2^7-1)
