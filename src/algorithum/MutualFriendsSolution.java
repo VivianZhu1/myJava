@@ -57,7 +57,6 @@ public class MutualFriendsSolution {
 				friendSet.add(Integer.parseInt(fds[1]));
 				friendsMap.put(Integer.parseInt(fds[0]), friendSet);
 				
-				//TODO: reverse to add mutual friends, which could extract a separate method later.
 				friendSet = friendsMap.get(Integer.parseInt(fds[1]));
 				if(friendSet == null) {
 					friendSet = new HashSet<Integer>();

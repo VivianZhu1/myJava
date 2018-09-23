@@ -17,7 +17,8 @@ class MoreseCode {
 	}
 	
 	
-    public int uniqueMorseRepresentations(String[] words) {
+    @SuppressWarnings({ "unchecked", "rawtypes" })
+	public int uniqueMorseRepresentations(String[] words) {
           String[] MORSE = new String[]{".-","-...","-.-.","-..",".","..-.","--.",
                          "....","..",".---","-.-",".-..","--","-.",
                          "---",".--.","--.-",".-.","...","-","..-",

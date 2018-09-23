@@ -33,6 +33,7 @@ public class TestSynchronized {
 		}, "test1");
 
 		Thread test2 = new Thread(new Runnable() {
+			@SuppressWarnings("static-access")
 			public void run() {
 				myt2.test2();
 			}

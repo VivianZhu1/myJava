@@ -13,9 +13,10 @@ public class MathStrTest {
 		
 		System.out.println(result);
 	}
-
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	private static int calculate(String mathStr) {
 		
+	
 		Deque stack = new ArrayDeque<>();
 		
 		char[] charAry = mathStr.toCharArray();

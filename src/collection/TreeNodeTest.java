@@ -50,6 +50,7 @@ public class TreeNodeTest {
 		
 	}
 
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	private static void preorder(TreeNode root, List tPreorder) {
 
 		if(root != null) {
@@ -73,7 +74,6 @@ public class TreeNodeTest {
 	}
 
 	private static TreeNode generateBinaryTree(TreeNode root) {
-		// TODO Auto-generated method stub
 		return root;
 	}
 

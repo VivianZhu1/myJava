@@ -3,7 +3,6 @@ package basic;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class ReflectionTest {
@@ -13,6 +12,7 @@ public class ReflectionTest {
 	Integer[] ints;
 	
 
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public static void main(String[] args) throws ClassNotFoundException, NoSuchMethodException, SecurityException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException { // Line 1
 	
 		List<Object> list = new ArrayList<Object>();

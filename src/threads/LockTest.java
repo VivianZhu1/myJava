@@ -20,16 +20,17 @@ public class LockTest {
 	}
 
 }
-
+@SuppressWarnings("rawtypes")
 class Consumer implements Runnable
 {
-    private final Queue sharedQ;
-    private int maxSize;
+  
+	private final Queue sharedQ;
+    @SuppressWarnings("unused")
+	private int maxSize;
      
     public Consumer(Queue sharedQ, int maxSize)
     {
         this.sharedQ = sharedQ;
-        this.maxSize = maxSize;
     }
      
     @Override
@@ -62,16 +63,19 @@ class Consumer implements Runnable
 
 class Producer implements Runnable
 {
-    private final Queue sharedQ;
+    @SuppressWarnings("rawtypes")
+	private final Queue sharedQ;
     private int maxSize;
      
-    public Producer(Queue sharedQ, int maxSize)
+    @SuppressWarnings("rawtypes")
+	public Producer(Queue sharedQ, int maxSize)
     {
         this.sharedQ = sharedQ;
         this.maxSize = maxSize;
     }
      
-    @Override
+    @SuppressWarnings("unchecked")
+	@Override
     public void run(){
          
         while(true)

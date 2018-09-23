@@ -18,7 +18,7 @@ public class FinallyTest {
 		
 	}
 	
-	@SuppressWarnings("finally")
+	@SuppressWarnings({ "finally", "unused" })
 	public int testFinally() {
 		
 		int result = 0;
