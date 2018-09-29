@@ -142,7 +142,7 @@ public class ArrayUtils {
 
 	public static void printOutList(Node node) {
 		StringBuffer sb = new StringBuffer();
-		while(node.getNext() != null) {
+		while(node != null) {
 			sb.append(node.getValue()+"(Random val:"+(node.getRandom() != null? node.getRandom().getValue() : "none")+")  ->  ");
 			node = node.getNext();
 		}

@@ -7,7 +7,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
 
-public class MyThreadTest {
+public class MyThreadPoolTest {
 	
 	@SuppressWarnings("unchecked")
 	public static void main(String[] args) throws InterruptedException {

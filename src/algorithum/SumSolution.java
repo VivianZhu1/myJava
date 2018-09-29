@@ -40,8 +40,8 @@ public class SumSolution {
 		for (int i = 0; i < ary.length; i++) {
 			int val = target - ary[i];
 			if(map.containsKey(val) && map.get(val) != i) {
-				rs[1] = i;
-				rs[0] = map.get(val);
+				rs[0] = Math.min(i, map.get(val));
+				rs[1] = Math.max(i, map.get(val));
 			}
 			
 		}
