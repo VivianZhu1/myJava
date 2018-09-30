@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import java.util.Set;
 
 
-public class InsectionOf2LinkedinList {
+public class IntersectionOf2LinkedList {
 	
 	public static void main(String[] args) {
 		

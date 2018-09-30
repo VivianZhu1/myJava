@@ -78,7 +78,7 @@ public class DsfCycleSolution {
 		DsfCycleSolution.addLine("A", "B");
 		DsfCycleSolution.addLine("A", "C");
 		DsfCycleSolution.addLine("B", "D");
-//		DsfCycleSolution.addLine("D", "A");
+		DsfCycleSolution.addLine("D", "A");
 		
 		for(int i= 0; i< adjacencyMatrix.length; i++) {
 			System.out.println(Arrays.toString(adjacencyMatrix[i]));

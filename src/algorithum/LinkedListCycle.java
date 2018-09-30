@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import util.ArrayUtils;
 import util.ListNode;
 
-public class LinkedListLoop {
+public class LinkedListCycle {
 	
 	
 	public static void main(String[] args) {
@@ -20,7 +20,7 @@ public class LinkedListLoop {
 		}
 		printOutList(list);
 		
-		LinkedListLoop test = new LinkedListLoop();
+		LinkedListCycle test = new LinkedListCycle();
 		boolean hasCycle = test.hasCycle(list.getFirst());
 		
 		System.out.println("the list "+(hasCycle ?"has":"hasn't")+" cycle");
