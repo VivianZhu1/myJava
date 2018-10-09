@@ -158,6 +158,36 @@ public class ArrayUtils {
 		}
 		return null;
 	}
+	
+	/**
+	 * 
+	 *                  13
+     *                 /  \
+     *               65    5
+     *              /  \    \
+     *             97  25   37
+     *            /    /\   / \
+     *           22   4 28 32  0
+     *           
+	 * int[] arr={null,13,65,5,97,25,null,37,22,null,4,28,0,0,32,0};
+	 * 
+	 * @param array
+	 * @param index
+	 * @return
+	 */
+	public static TreeNode makeBinaryTreeByArray(Integer[] array, int index) {
+		if (index < array.length) {
+			Integer value = array[index];
+			if (value != null) {
+				TreeNode t = new TreeNode(value);
+				array[index] = 0;
+				t.left = makeBinaryTreeByArray(array, index * 2);
+				t.right = makeBinaryTreeByArray(array, index * 2 + 1);
+				return t;
+			}
+		}
+		return null;
+	}
 
 	public static void main(String[] args) {
 		int[] arr = { 0, 13, 65, 5, 97, 25, 0, 37, 22, 0, 4, 28, 0, 0, 32, 0 };
