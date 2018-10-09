@@ -40,7 +40,9 @@ public class ClosestBinarySearchTreeValue {
 		return lowerNode.value;
 	}
 
-	// find the node with the largest valueue that smaller than target
+	/**
+	 * find the node with the largest valueue that smaller than target
+	 */
 	private TreeNode lowerBound(TreeNode root, double target) {
 		if (root == null) {
 			return null;
@@ -59,7 +61,10 @@ public class ClosestBinarySearchTreeValue {
 		return root;
 	}
 
-	// find the node with the smallest valueue that larger than or equal to target
+	
+	/**
+	 * find the node with the smallest valueue that larger than or equal to target
+	 */
 	private TreeNode upperBound(TreeNode root, double target) {
 		if (root == null) {
 			return null;
@@ -92,7 +97,7 @@ public class ClosestBinarySearchTreeValue {
 		Integer[] ary = {null, 6,4,7,2,5,null, null, null,3};
 		TreeNode root = ArrayUtils.makeBinaryTreeByArray(ary, 1);
 		
-		System.out.println("Closest value: "+new ClosestBinarySearchTreeValue().closestvalueue(root, 4.8));
+		System.out.println("Closest value: "+new ClosestBinarySearchTreeValue().closestvalueue(root, 2.5));
 		
 	}
 }
