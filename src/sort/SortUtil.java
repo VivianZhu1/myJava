@@ -156,14 +156,16 @@ public class SortUtil {
 	 * @param a
 	 */
 	public void insertSort(int[] a) {
-		for (int i = 1; i < a.length; i++) {
-			int temp = a[i];
+
+		// begin from the second element, assure element ahead is already sorted.
+		for(int i = 1; i<a.length; i++) {
+			int insertVal = a[i];
 			int j = i-1;
-			// if a[i] <a[j], then backward move array
-			for (; j>=0 && a[j] > temp ; j--) {
+			for(; j>=0 && insertVal < a[j]; j--) {
+				//move backward the sorted array
 				a[j+1] = a[j];
 			}
-			a[j+1]=temp;
+			a[j+1] = insertVal;
 		}
 	}
 	

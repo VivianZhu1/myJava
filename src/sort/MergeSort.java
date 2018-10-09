@@ -80,7 +80,7 @@ public class MergeSort {
 
 				if (value1 == value2) {
 					array[start + mergeCount] = value1;
-					array[start + mergeCount + 1] = value1;
+					array[start + mergeCount + 1] = value2;
 					mergeCount += 2;
 					index1++;
 					index2++;

@@ -6,8 +6,6 @@ import java.util.Random;
 
 public class LockTest {
 	
-	Object lock = new Object();
-	
 	public static void main(String[] args) {
 		final Queue<Integer> sharedQ = new LinkedList<Integer>();
 		  
@@ -25,8 +23,6 @@ class Consumer implements Runnable
 {
   
 	private final Queue sharedQ;
-    @SuppressWarnings("unused")
-	private int maxSize;
      
     public Consumer(Queue sharedQ, int maxSize)
     {
@@ -60,21 +56,18 @@ class Consumer implements Runnable
      
 }
 
-
 class Producer implements Runnable
 {
-    @SuppressWarnings("rawtypes")
-	private final Queue sharedQ;
+   
+	private final Queue<Integer> sharedQ;
     private int maxSize;
      
-    @SuppressWarnings("rawtypes")
-	public Producer(Queue sharedQ, int maxSize)
+	public Producer(Queue<Integer> sharedQ, int maxSize)
     {
         this.sharedQ = sharedQ;
         this.maxSize = maxSize;
     }
      
-    @SuppressWarnings("unchecked")
 	@Override
     public void run(){
          
@@ -97,7 +90,7 @@ class Producer implements Runnable
                 Random random = new Random(); 
                 int number = random.nextInt(100);
                 System.out.println("Producing value " + number);
-                sharedQ.add(number);
+                sharedQ.offer(number);
                 sharedQ.notify();
                  
             }

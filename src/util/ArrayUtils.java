@@ -1,5 +1,6 @@
 package util;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 
 public class ArrayUtils {
@@ -48,6 +49,30 @@ public class ArrayUtils {
 		System.out.println(sb.substring(0, sb.toString().length() - 4));
 
 		return linkedList;
+	}
+	
+	public static ListNode getListHeadByArray(int[] array) {
+		
+		System.out.println("generate list:");
+
+		LinkedList<ListNode> linkedList = new LinkedList<ListNode>();
+
+		for (int intVal : array) {
+			ListNode node = new ListNode(intVal);
+			linkedList.offer(node);
+		}
+
+		for (int j = 1; j < linkedList.size(); j++) {
+			linkedList.get(j - 1).next = linkedList.get(j);
+		}
+
+		StringBuffer sb = new StringBuffer();
+		for (ListNode node : linkedList) {
+			sb.append(node.val+"->");
+		}
+		System.out.println(sb.substring(0, sb.toString().length() - 2));
+
+		return linkedList.getFirst();
 	}
 	
 	public static LinkedList<RandomListNode> generateRandomListByArray(int[] array) {
@@ -133,6 +158,36 @@ public class ArrayUtils {
 		}
 		return null;
 	}
+	
+	/**
+	 * 
+	 *                  13
+     *                 /  \
+     *               65    5
+     *              /  \    \
+     *             97  25   37
+     *            /    /\   / \
+     *           22   4 28 32  0
+     *           
+	 * int[] arr={null,13,65,5,97,25,null,37,22,null,4,28,0,0,32,0};
+	 * 
+	 * @param array
+	 * @param index
+	 * @return
+	 */
+	public static TreeNode makeBinaryTreeByArray(Integer[] array, int index) {
+		if (index < array.length) {
+			Integer value = array[index];
+			if (value != null) {
+				TreeNode t = new TreeNode(value);
+				array[index] = 0;
+				t.left = makeBinaryTreeByArray(array, index * 2);
+				t.right = makeBinaryTreeByArray(array, index * 2 + 1);
+				return t;
+			}
+		}
+		return null;
+	}
 
 	public static void main(String[] args) {
 		int[] arr = { 0, 13, 65, 5, 97, 25, 0, 37, 22, 0, 4, 28, 0, 0, 32, 0 };
@@ -140,13 +195,38 @@ public class ArrayUtils {
 		System.out.println(root.value);
 	}
 
-	public static void printOutList(Node node) {
+	public static void printOutList1(Node node) {
 		StringBuffer sb = new StringBuffer();
-		while(node.getNext() != null) {
+		while(node != null) {
 			sb.append(node.getValue()+"(Random val:"+(node.getRandom() != null? node.getRandom().getValue() : "none")+")  ->  ");
 			node = node.getNext();
 		}
 		System.out.println(sb.substring(0, sb.toString().length()-4));
+		
+	}
+	
+	public static void printOutList(Node node) {
+		printOutList(node,"");
+		
+	}
+	public static void printOutList(Node node, String info) {
+		if(!info.equals(""))
+			System.out.println(info);
+		StringBuffer sb = new StringBuffer();
+		while(node != null) {
+			sb.append(node.getValue()+"->");
+			node = node.getNext();
+		}
+		System.out.println(sb.substring(0, sb.toString().length()-2));
+		
+	}
+
+	public static void printMatrix(int[][] matrix, String hint) {
+		
+		System.out.println(hint);
+		for (int i = 0; i < matrix.length; i++) {
+			System.out.println(Arrays.toString(matrix[i]));
+		}
 		
 	}
 }
