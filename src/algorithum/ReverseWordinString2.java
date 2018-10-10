@@ -28,7 +28,7 @@ public class ReverseWordinString2 {
 		
 		StringBuffer sb = new StringBuffer();
 		
-		String[] words = s.split(" ");
+		String[] words = s.split("\\s+");
 		
 		for (int j = words.length-1; j>=0; j--) {
 			sb.append(words[j]).append(" ");

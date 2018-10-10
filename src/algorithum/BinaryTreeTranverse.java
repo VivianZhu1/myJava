@@ -18,6 +18,10 @@ public class BinaryTreeTranverse {
     public BinaryTreeTranverse(int[] array){
         root=ArrayUtils.makeBinaryTreeByArray(array,1);
     }
+    
+    public BinaryTreeTranverse(TreeNode root) {
+    	this.root = root;
+    }
 
     /**
      * 深度优先遍历，相当于先根遍历
