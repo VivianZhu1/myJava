@@ -180,7 +180,7 @@ public class ArrayUtils {
 			Integer value = array[index];
 			if (value != null) {
 				TreeNode t = new TreeNode(value);
-//				array[index] = 0;
+				array[index] = 0;
 				t.left = makeBinaryTreeByArray(array, index * 2);
 				t.right = makeBinaryTreeByArray(array, index * 2 + 1);
 				return t;
