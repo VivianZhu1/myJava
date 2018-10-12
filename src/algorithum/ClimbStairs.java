@@ -29,6 +29,10 @@ public class ClimbStairs {
 			System.out.println("stair steps is " + ary[i] + ", then there're "
 								+ climbStairs2(ary[i]) + " ways to climb.");
 		}
+		for (int i = 0; i < ary.length; i++) {
+			System.out.println("stair steps is " + ary[i] + ", then there're "
+								+ clibStairs_dp(ary[i]) + " ways to climb.");
+		}
 	}
 
 	public static int climbStairs1(int n) {
@@ -53,6 +57,23 @@ public class ClimbStairs {
 			return 1;
 		}
 		return climb_Stairs(i + 1, n) + climb_Stairs(i + 2, n);
+	}
+	
+	
+	public static int clibStairs_dp(int n) {
+		
+		 if(n==1) return n;
+		
+		int[] aux = new int[n+1];
+		
+		aux[1] = 1;
+		aux[2] = 2;
+		
+		for(int i = 3; i<=n; i++) {
+			aux[i] = aux[i-1]+aux[i-2];
+		}
+		return aux[n];
+		
 	}
 	
 }

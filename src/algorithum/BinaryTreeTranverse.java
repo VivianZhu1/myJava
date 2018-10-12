@@ -185,7 +185,7 @@ public class BinaryTreeTranverse {
 		   15   7
 	 *
 	 */
-	public List<List<Integer>> levelOrderList(TreeNode root) {
+	public static List<List<Integer>> levelOrderList(TreeNode root) {
 		List<List<Integer>> res = new ArrayList<>();
 		Deque<TreeNode> q = new LinkedList<>();
 		
@@ -231,7 +231,7 @@ public class BinaryTreeTranverse {
         System.out.println("PostOrder traverse: "+tree.postorderTraversal(tree.root).toString());
         
         System.out.println("Zigzag level order:" +tree.zigzagLevelOrder(tree.root));
-        System.out.println("Level order with list:"+ tree.levelOrderList(tree.root));
+        System.out.println("Level order with list:"+ levelOrderList(tree.root));
        
     }
 }

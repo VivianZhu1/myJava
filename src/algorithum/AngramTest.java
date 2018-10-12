@@ -22,7 +22,7 @@ public class AngramTest {
 	    
 	    if (s == null || s.length() == 0 || p == null || p.length() == 0) return list;
 	    
-	    int[] hash = new int[256]; //character hash
+	    int[] hash = new int[100]; //character hash
 	    
 	    //record each character in p to hash
 	    for (char c : p.toCharArray()) {

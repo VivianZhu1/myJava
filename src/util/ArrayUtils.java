@@ -2,6 +2,9 @@ package util;
 
 import java.util.Arrays;
 import java.util.LinkedList;
+import java.util.List;
+
+import algorithum.BinaryTreeTranverse;
 
 public class ArrayUtils {
 
@@ -220,6 +223,14 @@ public class ArrayUtils {
 		System.out.println(sb.substring(0, sb.toString().length()-2));
 		
 	}
+	
+	/**
+	 * print out tree in level order
+	 * @param root
+	 */
+	public static void printOutTree(TreeNode root) {
+		printOutTree(root,"");
+	}
 
 	public static void printMatrix(int[][] matrix, String hint) {
 		
@@ -229,4 +240,11 @@ public class ArrayUtils {
 		}
 		
 	}
+
+	public static void printOutTree(TreeNode root, String info) {
+		if(info != null && !info.equals("")) 
+			System.out.println(info);
+		System.out.println(BinaryTreeTranverse.levelOrderList(root));
+	}
+
 }

@@ -49,7 +49,7 @@ public class LargestBSTSubtree {
 		return range;
 	}
 
-	public int largestBSTSubtree(TreeNode root) {
+	public int largestBSTSubtree2(TreeNode root) {
 		if (root != null)
 			check(root);
 		return max;
@@ -60,7 +60,7 @@ public class LargestBSTSubtree {
 	 * @param root
 	 * @return int
 	 */
-	public int largestBSTSubtree2(TreeNode root) {
+	public int largestBSTSubtree(TreeNode root) {
 		if (root == null) {
 			return 0;
 		}
