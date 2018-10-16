@@ -1,6 +1,11 @@
 package algorithum;
 
+import java.util.Deque;
+import java.util.LinkedList;
+
+import util.ArrayUtils;
 import util.ListNode;
+
 
 /**
  *  https://leetcode.com/articles/add-two-numbers/
@@ -23,49 +28,94 @@ import util.ListNode;
 public class AddTwoNumbers {
 	
 	public static void main(String[] args) {
-		ListNode node1 = new ListNode(2);
-		ListNode node2 = new ListNode(4);
-		ListNode node3 = new ListNode(3);
-		node1.next = node2;
-		node2.next = node3;
 		
-		ListNode node4 = new ListNode(5);
-		ListNode node5 = new ListNode(6);
-		ListNode node6 = new ListNode(4);
-		node4.next=node5;
-		node5.next=node6;
-
+//		int[] ary1 = {2,4,3};
+//		int[] ary2 = {5,6,4};
 		
-		AddTwoNumbers solution = new AddTwoNumbers();
-		ListNode node = solution.addTwoNumbers(node1, node4);
+		int[] ary1 = {1,8};
+		int[] ary2 = {0};
 		
-		while(node.next!= null) {
-			System.out.print( node.val+"-> ");
-			node = node.next;
-		}
-		System.out.print(node.val);
+		ListNode head1 = ArrayUtils.getListHeadByArray(ary1);
+		ListNode head2 = ArrayUtils.getListHeadByArray(ary2);
+		
+		ListNode head = new AddTwoNumbers().addTwoNumbers1(head1, head2);
+		
+		ArrayUtils.printOutList(head, "Added List: ");
+		
 	}
 	
-    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        
-    	 ListNode dummyHead = new ListNode(0);
-    	    ListNode p = l1, q = l2, curr = dummyHead;
-    	    int carry = 0;
-    	    while (p != null || q != null) {
-    	        int x = (p != null) ? p.val : 0;
-    	        int y = (q != null) ? q.val : 0;
-    	        int sum = carry + x + y;
-    	        carry = sum / 10;
-    	        curr.next = new ListNode(sum % 10);
-    	        curr = curr.next;
-    	        if (p != null) p = p.next;
-    	        if (q != null) q = q.next;
-    	    }
-    	    if (carry > 0) {
-    	        curr.next = new ListNode(carry);
-    	    }
-    	    return dummyHead.next;
-    }
+	public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+
+		ListNode dummyHead = new ListNode(0);
+		
+		ListNode p = l1, q = l2, curr = dummyHead;
+		
+		int carry = 0;
+		
+		while (p != null || q != null) {
+			
+			int x = (p != null) ? p.val : 0;
+			int y = (q != null) ? q.val : 0;
+			
+			int sum = carry + x + y;
+			carry = sum / 10;
+			
+			curr.next = new ListNode(sum % 10);
+			curr = curr.next;
+			
+			if (p != null)
+				p = p.next;
+			
+			if (q != null)
+				q = q.next;
+		}
+		if (carry > 0) {
+			curr.next = new ListNode(carry);
+		}
+		return dummyHead.next;
+	}
+	
+	/**
+	 * 根据explanation 倒序相加，得到结果
+	 * 342 + 465 = 807
+	 * 返回倒序链表7-0-8
+	 * 
+	 * @param l1
+	 * @param l2
+	 * @return
+	 */
+	public ListNode addTwoNumbers1(ListNode l1, ListNode l2) {
+		
+		
+		Deque<ListNode> stack1 = new LinkedList<>();
+		Deque<ListNode> stack2 = new LinkedList<>();
+		
+		while(l1!=null) {
+			stack1.push(l1);
+			l1 = l1.next;
+		}
+		
+		while(l2!=null) {
+			stack2.push(l2);
+			l2 = l2.next;
+		}
+		
+		int carry = 0;
+		ListNode cur = new ListNode(0);
+		ListNode head = cur;
+		
+		while(!stack1.isEmpty() || !stack2.isEmpty() || carry > 0) {
+			int v1 = stack1.isEmpty()? 0:stack1.pop().val;
+			int v2 = stack2.isEmpty()? 0:stack2.pop().val;
+			
+			ListNode node = new ListNode((v1+v2+carry)%10);
+			
+			cur.next = node;
+			cur = cur.next;
+			carry = (v1+v2+carry)>= 10? 1:0;
+		}
+		return head;
+	}
 }
 
 
