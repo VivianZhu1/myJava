@@ -2,7 +2,6 @@ package util;
 
 import java.util.Arrays;
 import java.util.LinkedList;
-import java.util.List;
 
 import algorithum.BinaryTreeTranverse;
 
@@ -24,6 +23,13 @@ public class ArrayUtils {
 	 */
 	public static void printArray(int[] array) {
 		printArray(array, "");
+	}
+	
+	public static boolean isEmptyStr(String str ) {
+		if(str == null || str.isEmpty())
+			return true;
+		else
+			return false;
 	}
 
 	/**
@@ -239,6 +245,15 @@ public class ArrayUtils {
 			System.out.println(Arrays.toString(matrix[i]));
 		}
 		
+	}
+
+	public static void printMatrix(char[][] matrix, String hint) {
+
+		System.out.println(hint);
+		for (int i = 0; i < matrix.length; i++) {
+			System.out.println(Arrays.toString(matrix[i]));
+		}
+
 	}
 
 	public static void printOutTree(TreeNode root, String info) {

@@ -33,7 +33,6 @@ public class FirstUniqCharacterInString {
 			if(smap[ch-'a']==1) {
 				return s.indexOf(ch);
 			}
-				
 		}
 		return -1;
 

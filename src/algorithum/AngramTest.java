@@ -3,6 +3,12 @@ package algorithum;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 
+ * silvivent and listen is a pair of anagram
+ * 异构字
+ * 
+ */
 public class AngramTest {
 	
 	public static void main(String[] args) {
@@ -13,7 +19,6 @@ public class AngramTest {
 		for (Integer i : list) {
 			System.out.print(i+" , ");
 		}
-		
 	}
 
 	
