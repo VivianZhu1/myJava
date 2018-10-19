@@ -2,6 +2,7 @@ package algorithum;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Deque;
 import java.util.LinkedList;
 import java.util.List;
@@ -37,7 +38,7 @@ public class BinaryTreeTranverse {
         stack.push(root);       
         while(stack.isEmpty()==false){
             TreeNode node=stack.pop();
-            System.out.print(node.value+"    ");
+            System.out.print(node.value+", ");
             if(node.right!=null){
                 stack.push(node.right);
             }
@@ -47,9 +48,24 @@ public class BinaryTreeTranverse {
         }
         System.out.print("\n");
     }
+    
+    public void depthOrderTraRecur(TreeNode root) {
+    	List<Integer> list = new ArrayList<>();
+    	_depthRecur(root, list);
+    	System.out.println(Arrays.toString(list.toArray()));
+
+    }
 
 
-    /**
+    private void _depthRecur(TreeNode root, List<Integer> list) {
+    	if(root == null)
+    		return;
+    	list.add(root.value);
+    	_depthRecur(root.left,list);
+    	_depthRecur(root.right,list);
+	}
+
+	/**
      * 广度优先遍历
      * 采用非递归实现
      * 需要辅助数据结构：队列
@@ -63,7 +79,7 @@ public class BinaryTreeTranverse {
         queue.add(root);
         while(queue.isEmpty()==false){
             TreeNode node=queue.poll();
-            System.out.print(node.value+"    ");
+            System.out.print(node.value+", ");
             if(node.left!=null){
                 queue.offer(node.left);
             }
@@ -221,17 +237,27 @@ public class BinaryTreeTranverse {
      *           22   4 28 32
      */
     public static void main(String[] args) {
+    	
         int[] arr={0,13,65,5,97,25,0,37,22,0,4,28,0,0,32,0};
         BinaryTreeTranverse tree=new BinaryTreeTranverse(arr);
+        
+        System.out.println( "Depth traverse: ");
         tree.depthOrderTraversal();
+        
+        System.out.println("Depth traverse recursive:");
+        tree.depthOrderTraRecur(tree.root);
+        
+        System.out.println("Level traverse:");
         tree.levelOrderTraversal();
         
-        System.out.println("InOrder traverse: "+tree.inorderTraversal(tree.root).toString());
-        System.out.println("PreOrder traverse: "+tree.preorderTraversal(tree.root).toString());
-        System.out.println("PostOrder traverse: "+tree.postorderTraversal(tree.root).toString());
+        System.out.println("Level order with list:\n"+ levelOrderList(tree.root));
         
-        System.out.println("Zigzag level order:" +tree.zigzagLevelOrder(tree.root));
-        System.out.println("Level order with list:"+ levelOrderList(tree.root));
-       
+        System.out.println("Zigzag level order:\n" +tree.zigzagLevelOrder(tree.root));
+        
+        System.out.println("InOrder traverse:\n "+tree.inorderTraversal(tree.root).toString());
+        
+        System.out.println("PreOrder traverse:\n "+tree.preorderTraversal(tree.root).toString());
+        
+        System.out.println("PostOrder traverse:\n "+tree.postorderTraversal(tree.root).toString());
     }
 }

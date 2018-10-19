@@ -25,8 +25,8 @@ public class BestTimeToBuySell {
 		int[] stock = { 7, 1, 5, 3, 6, 4 };
 //		int[] stock = { 7, 6, 4, 3, 1 };
 
-		System.out.println(maxProfit(stock));
-		System.out.println(maxProfitRecursive(stock));
+		System.out.println("The max profix is: "+maxProfit(stock));
+		System.out.println("The max profix is: "+maxProfitRecursive(stock));
 	}
 
 	public static int maxProfit(int[] prices) {
@@ -42,11 +42,9 @@ public class BestTimeToBuySell {
 		}
 
 		int max = prices[mindex];
-		int mandex = mindex;
 		for (int j = mindex; j < prices.length; j++) {
 			if (prices[j] > max) {
 				max = prices[j];
-				mandex = j;
 			}
 		}
 
@@ -59,7 +57,7 @@ public class BestTimeToBuySell {
 	public static int maxProfitRecursive(int[] prices) {
 
 		int maxCur = 0, maxSoFar = 0;
-		for (int i = 1; i < prices.length; i++) {
+		for (int i = 0; i < prices.length; i++) {
 			maxCur = Math.max(0, maxCur += prices[i] - prices[i - 1]);
 			maxSoFar = Math.max(maxCur, maxSoFar);
 		}

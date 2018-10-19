@@ -1,20 +1,20 @@
 package algorithum;
 import util.ArrayUtils;
 import util.TreeNode;
-
 /**
- * Given a binary tree, flatten it to a linked list in-place.
- * 
- * For example, given the following tree:
- * 
-	    1             1
-	   / \             
-	  2   5              
-	 / \   \             
-	3   4   6             
- *
- * into list IN-PLACE
- *
+ 	
+ 	Given a binary tree, flatten it to a linked list in-place.
+
+	For example, given the following tree:
+	
+	    1
+	   / \
+	  2   5
+	 / \   \
+	3   4   6
+	
+	The flattened tree should look like:
+	
 	1
 	 \
 	  2
@@ -26,10 +26,7 @@ import util.TreeNode;
 	        5
 	         \
 	          6
- */
-
-/**
- * bottom-up,  post order traversal solution
+	          
  */
 public class FlattentBinaryTree {
 

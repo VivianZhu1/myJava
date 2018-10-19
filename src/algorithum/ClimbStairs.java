@@ -22,15 +22,15 @@ public class ClimbStairs {
 
 		int[] ary = { 1, 2, 3, 4, 5,44 };
 		for (int i = 0; i < ary.length; i++) {
-			System.out.println("stair steps is " + ary[i] + ", then there're "
+			System.out.println("Recursive: stair steps is " + ary[i] + ", then there're "
 								+ climbStairs1(ary[i]) + " ways to climb.");
 		}
+//		for (int i = 0; i < ary.length; i++) {
+//			System.out.println("stair steps is " + ary[i] + ", then there're "
+//								+ climbStairs2(ary[i]) + " ways to climb.");
+//		}
 		for (int i = 0; i < ary.length; i++) {
-			System.out.println("stair steps is " + ary[i] + ", then there're "
-								+ climbStairs2(ary[i]) + " ways to climb.");
-		}
-		for (int i = 0; i < ary.length; i++) {
-			System.out.println("stair steps is " + ary[i] + ", then there're "
+			System.out.println("DP: stair steps is " + ary[i] + ", then there're "
 								+ clibStairs_dp(ary[i]) + " ways to climb.");
 		}
 	}
@@ -62,7 +62,7 @@ public class ClimbStairs {
 	
 	public static int clibStairs_dp(int n) {
 		
-		 if(n==1) return n;
+		if(n==1) return n;
 		
 		int[] aux = new int[n+1];
 		

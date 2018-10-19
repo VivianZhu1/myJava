@@ -13,6 +13,10 @@ public class HouseRobber {
 	}
 
 	/**
+	 * 动态规划：相邻的数不能取，
+	 * 
+	 * dp[i] = Math.max(dp[i-2], dp[i-3]); 
+	 * return Math.max(dp[n-1],dp[n-2]);
 	 * 
 	 * You are a professional robber planning to rob houses along a street. Each
 	 * house has a certain amount of money stashed, the only constraint stopping you

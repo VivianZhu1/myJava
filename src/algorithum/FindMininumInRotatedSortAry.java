@@ -87,7 +87,8 @@ public class FindMininumInRotatedSortAry {
 		int low = 0;
 		int high = num.length - 1;
 		while (low < high) {
-			int mid = (low + high) / 2;
+			// to avoid Integer overflow
+			int mid = low + (high - low) / 2;
 			
 			// if mid > high, the min is in the right part(rotated part). 
 			//then low = mid+1
