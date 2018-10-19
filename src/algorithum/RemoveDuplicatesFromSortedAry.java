@@ -23,6 +23,7 @@ public class RemoveDuplicatesFromSortedAry {
 		if(nums == null) {
 			return 0;
 		}		
+		// start with second element j , compare with the first one  j-1
 		int i = 1;
 		for(int j = 1; j< nums.length; j++) {
 			if(nums[j] != nums[j-1]) {

@@ -1,4 +1,5 @@
 package algorithum;
+import util.ArrayUtils;
 import util.TreeNode;;
 
 
@@ -19,9 +20,9 @@ import util.TreeNode;;
        /              \
     ___5__          ___1__
    /      \        /      \
-   6      _2       0       8
-         /  \
-         7   4
+   6      _2_      0       8
+         /   \
+        7     4
          
  *
  *
@@ -30,18 +31,26 @@ public class LCAofBinaryTree {
 	
 	public static void main(String[] args) {
 	
-		int[] ary = {0,3,5,1,6,2,0,8,0,0,7,4};
+		Integer[] ary = {null,3,5,1,6,2,0,8,null, null, 7,4};
 		
-		TreeNode root = generateTreeByAry(ary, 1);
+		TreeNode root = ArrayUtils.makeBinaryTreeByArray(ary, 1);
 		
-		TreeNode node1 = root.left;
-		TreeNode node2 = root.right;
+		ArrayUtils.printOutTree(root, "Create tree as:");
 		
-		TreeNode lcaNode = lowestCommonAncestor(root, node1 , node2);
+		TreeNode lcaNode = lowestCommonAncestor(root, new TreeNode(0) , new TreeNode(4));
+		System.out.println( "LCA of [0,4] is : "+(lcaNode==null?"null": lcaNode.value));
 		
-		System.out.println(lcaNode.value);
+		TreeNode lcaNode1 = lowestCommonAncestor(root, new TreeNode(7) , new TreeNode(4));
+		System.out.println( "LCA of [7,4] is : "+(lcaNode1==null?"null": lcaNode1.value));
 		
+		TreeNode lcaNode2 = lowestCommonAncestor(root, new TreeNode(7) , new TreeNode(9));
+		System.out.println( "LCA of [7,9] is : "+(lcaNode2==null?"null": lcaNode2.value));
 		
+		TreeNode lcaNode3 = lowestCommonAncestor(root, new TreeNode(6) , new TreeNode(9));
+		System.out.println( "LCA of [6,9] is : "+(lcaNode3==null?"null": lcaNode3.value));
+		
+		TreeNode lcaNode4 = lowestCommonAncestor(root, new TreeNode(15) , new TreeNode(20));
+		System.out.println( "LCA of [15,20] is : "+(lcaNode4==null?"null": lcaNode4.value));
 	}
 	
 	/**
@@ -57,31 +66,20 @@ public class LCAofBinaryTree {
 	 */
 	public static TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
 		
-		if(root== null || root == p || root == q)
+		//only one of p or q (NOT both of them), exists in Tree rooted at root
+		if(root== null || root.value == p.value || root.value == q.value)
 			return root;
+		
 		TreeNode left = lowestCommonAncestor(root.left, p, q);
 		TreeNode right = lowestCommonAncestor(root.right, p, q);
+		
+		//oth p and q exist in Tree rooted at root
 		if(left!=null &&right !=null )
 			return root;
+		
+		//neither p and q exist in Tree rooted at root
 		return left!=null?left:right;
 	      
 	        
 	}
-	
-	public static TreeNode generateTreeByAry(int[] ary,int index) {
-		if(index <  ary.length) {
-			int value = ary[index];
-			if(value !=0) {
-				TreeNode node = new TreeNode(value);
-				node.left = generateTreeByAry(ary, index*2);
-				node.right = generateTreeByAry(ary, index *2+1);
-				return node;
-			}
-			
-		}
-		return null;
-		
-		
-	}
-
 }

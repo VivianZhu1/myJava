@@ -260,6 +260,7 @@ public class ArrayUtils {
 		if(info != null && !info.equals("")) 
 			System.out.println(info);
 		System.out.println(BinaryTreeTranverse.levelOrderList(root));
+		System.out.println("");
 	}
 
 }
