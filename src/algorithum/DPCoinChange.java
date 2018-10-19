@@ -3,6 +3,9 @@ package algorithum;
 public class DPCoinChange {
 
 	/**
+	 * 总共的找零方法数：
+	 * c[i,j]=c[i-1,j] + c[i,j-coinsValue[i]]
+	 * 
 	 * @param coinsValues  币种
 	 * @param n 待找零钱金额
 	 * @return 多少种找零的找法
@@ -33,6 +36,8 @@ public class DPCoinChange {
 	}
 
 	/**
+	 * 最优找零（币种最少）
+	 * c[i,j]= min{c[i-1,j] , c[i, j-coinsValues[i]] + 1} 
 	 * 
 	 * @param coinsValues 可用来找零的硬币 coinsValues.length 是硬币的种类
 	 * @param n           待找的零钱

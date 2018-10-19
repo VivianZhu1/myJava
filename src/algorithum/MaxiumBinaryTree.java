@@ -28,7 +28,7 @@ import util.TreeNode;
  */
 public class MaxiumBinaryTree {
 
-	public TreeNode constructMaximumBinaryTree(int[] nums) {
+	public TreeNode constructMaximumBinaryTree1(int[] nums) {
 		
 		Deque<TreeNode> stack = new LinkedList<>();
 		
@@ -50,7 +50,7 @@ public class MaxiumBinaryTree {
 		return stack.isEmpty() ? null : stack.removeLast();
 	}
 	
-	public TreeNode constructMaximumBinaryTreeRecur(int[] nums) {
+	public TreeNode constructMaximumBinaryTree(int[] nums) {
 		if (nums == null)
 			return null;
 		return build(nums, 0, nums.length - 1);
@@ -80,12 +80,12 @@ public class MaxiumBinaryTree {
 		
 		int[] ary = {3,2,1,6,0,5};
 	
-		TreeNode root = new MaxiumBinaryTree().constructMaximumBinaryTree(ary);
+		TreeNode root = new MaxiumBinaryTree().constructMaximumBinaryTree1(ary);
 		
 		BinaryTreeTranverse bt = new BinaryTreeTranverse(root);
 		bt.levelOrderTraversal();
 		
-		TreeNode root1 = new MaxiumBinaryTree().constructMaximumBinaryTreeRecur(ary);
+		TreeNode root1 = new MaxiumBinaryTree().constructMaximumBinaryTree(ary);
 		System.out.println("recursive:"+bt.levelOrderList(root1).toString());
 	}
 

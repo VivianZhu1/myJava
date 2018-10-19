@@ -39,7 +39,7 @@ public class LongestPalindromicSubstr {
 		for (int i = 0; i < length; i++) {
 			for (int j = i + 1; j < length; j++) {
 				int len = j - i;
-				String curr = s.substring(i, j + 1);
+				String curr = s.substring(i, j);
 				if (isPalindrome(curr)) {
 					if (len > maxPalinLength) {
 						longestPalindrome = curr;

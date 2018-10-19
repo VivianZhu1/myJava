@@ -26,22 +26,21 @@ public class TreeTranverse {
 		
 		TreeNode root = generateTree();
 		
-		dsfTraverse(root);
+		dfsTraverse(root);
 		System.out.println("");
 		
-		dsfTransRecursive(root);
+		dfsTransRecursive(root);
 		System.out.println("");
 		
-		bsfTraverse(root);
+		bfsTraverse(root);
 		System.out.println("");
 		
 	}
 
 
-	private static void bsfTraverse(TreeNode root) {
+	private static void bfsTraverse(TreeNode root) {
 		if(root == null)
 			return;
-		
 		
 		Deque<TreeNode> queue = new ArrayDeque<TreeNode>();
 		
@@ -55,7 +54,7 @@ public class TreeTranverse {
 		}
 	}
 
-	private static void dsfTraverse(TreeNode root) {
+	private static void dfsTraverse(TreeNode root) {
 		if(root == null) {
 			System.out.println("Empty Tree!");
 			return;
@@ -73,14 +72,14 @@ public class TreeTranverse {
 		}
 	}
 	
-	private static void dsfTransRecursive(TreeNode root) {
+	private static void dfsTransRecursive(TreeNode root) {
 		if(root == null)
 			return;
 		
 		System.out.print(root.label+" ");
 		
 		for(int i = 0; i<root.children.size(); i++) {
-			dsfTransRecursive(root.children.get(i));
+			dfsTransRecursive(root.children.get(i));
 		}
 	}
 

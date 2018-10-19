@@ -100,7 +100,7 @@ public class FindMininumInRotatedSortAry {
 			}
 		}
 		// the array is ascend sorted. 
-		return num[high];
+		return num[low];
 	}
 
 	public static void main(String[] args) {

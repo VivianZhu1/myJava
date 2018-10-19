@@ -26,7 +26,7 @@ import java.util.Arrays;
  */
 public class JumpGame {
 
-	public  boolean canJump(int[] nums) {
+	public  boolean canJump1(int[] nums) {
 		boolean can = false;
 
 		int maxindex = nums.length - 1;
@@ -44,12 +44,22 @@ public class JumpGame {
 		return can;
 	}
 	
-	boolean canJump(int A[], int n) {
-	    int last=n-1,i;
-	    for(i=n-2;i>=0;i--){
-	        if(i+A[i]>=last)last=i;
-	    }
-	    return last==0;
+	/**
+	 * Greedy
+	 * 
+	 * @param nums
+	 * @return
+	 */
+	public boolean canJump(int[] nums) {
+
+		int n = nums.length;
+		int last = n - 1;
+
+		for (int i = n - 2; i >= 0; i--) {
+			if (i + nums[i] >= last)
+				last = i;
+		}
+		return last == 0;
 	}
 	
     boolean canJumpDP(int[] nums) {
@@ -82,10 +92,10 @@ public class JumpGame {
 				+(new JumpGame().canJump(canary)?" can ":" cannot ")+"jump to last index." );
 		
 		System.out.println("input ary" + Arrays.toString(cannotAry)
-			    + (new JumpGame().canJumpDP(cannotAry)?" can ":" cannot ")+"jump to last index." );
+			    + (new JumpGame().canJump(cannotAry)?" can ":" cannot ")+"jump to last index." );
 			
 		System.out.println("input ary" + Arrays.toString(ary)
-				+(new JumpGame().canJump(ary, ary.length)?" can ":" cannot ")+"jump to last index." );
+				+(new JumpGame().canJump(ary)?" can ":" cannot ")+"jump to last index." );
 
 	}
 }

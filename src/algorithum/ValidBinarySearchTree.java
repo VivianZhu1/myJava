@@ -1,7 +1,5 @@
 package algorithum;
-import java.util.ArrayDeque;
-import java.util.Deque;
-
+import util.ArrayUtils;
 import util.TreeNode;
 
 /**
@@ -26,24 +24,7 @@ import util.TreeNode;
 
 public class ValidBinarySearchTree {
 	
-	public static void main(String[] args) {
-		
-		ValidBinarySearchTree solution = new ValidBinarySearchTree();
-		
-		Integer[] ary = {null,5,1,4,null,null,3,6};
-		TreeNode root1 = solution.generateTree(ary, 1);
-		
-		Integer[] ary2 = {null,2,1,3};
-		TreeNode root2 = solution.generateTree(ary2, 1);
-		
-		boolean flag1 = solution.isValidBSTRecursive(root1);
-		boolean flag2 = solution.isValidBSTRecursive(root2);
-		
-		System.out.println(flag1+","+flag2);
-		
-		System.out.println( solution.isValidBSTIter(root1) +","+  solution.isValidBSTIter(root2) );
-		
-	}
+
 	
 	public boolean isValidBSTRecursive(TreeNode root) {
 		return _isValidBSTRecu(root, Long.MIN_VALUE, Long.MAX_VALUE);
@@ -62,43 +43,18 @@ public class ValidBinarySearchTree {
 	}
 	
 	
-	public boolean isValidBSTIter(TreeNode root) {
-		//TODO:
-		boolean flag = true;
-		Deque<TreeNode> stack = new ArrayDeque<>();
+	public static void main(String[] args) {
 		
-		stack.push(root);
-		while(!stack.isEmpty()) {
-			TreeNode node = stack.pop();
-			TreeNode left = node.left;
-			TreeNode right = node.right;
-			if(left!= null && right!= null
-					&& (node.value < left.value || node.value > right.value))
-				flag = false;
-			
-			if(right != null)
-				stack.push(right);
-			if (left != null) {
-				stack.push(left);
-			}
+		ValidBinarySearchTree solution = new ValidBinarySearchTree();
 		
-		}
-		return flag;
-
+		Integer[] ary = {null,5,1,4,null,null,3,6};
+		TreeNode root1 = ArrayUtils.makeBinaryTreeByArray(ary, 1);
+		ArrayUtils.printOutTree(root1);
+		System.out.println("Above tree "+(solution.isValidBSTRecursive(root1)?"IS ":"ISN'T ")+"valid BST.\n");
+		
+		Integer[] ary2 = {null,2,1,3};
+		TreeNode root2 = ArrayUtils.makeBinaryTreeByArray(ary2, 1);
+		ArrayUtils.printOutTree(root2);
+		System.out.println("Above tree "+(solution.isValidBSTRecursive(root2)?"IS ":"ISN'T ")+"valid BST.");
 	}
-
-	public TreeNode generateTree(Integer[] ary, int index) {
-		if(index < ary.length) {
-			Integer value = ary[index];
-			if(value != null) {
-				TreeNode node = new TreeNode(value);
-				node.left = generateTree(ary, index*2);
-				node.right = generateTree(ary, index*2+1);
-				return node;
-			}
-		}
-		return null;
-	}
-	
-
 }
